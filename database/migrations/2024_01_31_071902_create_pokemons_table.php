@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('order');
             $table->enum('form', ['head', 'head_legs', 'fins', 'wings'])->default(null);
             $table->bigInteger('ability_id')->unsigned();
-            $table->bigInteger('location_id')->unsigned();
             $table->timestamps();
         });
     }

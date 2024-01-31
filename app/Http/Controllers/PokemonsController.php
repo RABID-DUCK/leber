@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PokemonRequest;
 use App\Http\Resources\PokemonResources;
 use App\Models\Locations;
+use App\Models\PokemonLocations;
 use App\Models\Pokemons;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -27,10 +28,14 @@ class PokemonsController extends Controller
             'order' => $order === null ? 1 : $order + 1,
             'form' => $data['form'],
             'ability_id' => $data['ability_id'],
-            'location_id' => $data['location_id']
         ]);
 
-        Storage::disk('public')->putFileAs('images', $data['img'], $data['img']->getClientOriginalName());
+        PokemonLocations::create([
+            'location_id' => $data['location_id'],
+            'pokemon_id' => $pokemon->id
+        ]);
+
+        Storage::disk('public')->put('images', $data['img']);
 
         return new PokemonResources($pokemon);
     }

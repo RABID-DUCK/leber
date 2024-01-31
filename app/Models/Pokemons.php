@@ -16,7 +16,7 @@ class Pokemons extends Model
         return $this->hasOne(Abilities::class, 'id', 'ability_id');
     }
 
-    public function getLocation(){
-        return $this->hasOne(Locations::class, 'id', 'location_id');
+    public function getLocations(){
+        return $this->belongsToMany(Locations::class, 'pokemon_locations', 'pokemon_id', 'location_id');
     }
 }

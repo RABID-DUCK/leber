@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('pokemons', function (Blueprint $table) {
             $table->foreign('ability_id')->references('id')->on('abilities')->onDelete('cascade');
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
         });
     }
 
@@ -24,9 +23,7 @@ return new class extends Migration
     {
         Schema::table('pokemons', function (Blueprint $table) {
             $table->dropForeign(['ability_id']);
-            $table->dropForeign(['location_id']);
             $table->dropColumn('ability_id');
-            $table->dropColumn('location_id');
         });
     }
 };

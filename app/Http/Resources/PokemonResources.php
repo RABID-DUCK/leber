@@ -21,7 +21,7 @@ class PokemonResources extends JsonResource
             'order' => $this->order,
             'form' => $this->form,
             'ability_id' => $this->getAbility,
-            'location_id' => $this->getLocation
+            'location_id' => $this->getLocations
         ];
     }
 }
